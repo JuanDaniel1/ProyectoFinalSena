@@ -22,58 +22,78 @@ class ProductCard extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(5 ),
       child: Card(
-        elevation: 10,
-        child:  SizedBox(
-          child: GestureDetector(
-            onTap: () => Navigator.pushNamed(
-              context,
-              DetailsScreen.routeName,
-              arguments: ProductDetailsArguments(product: product),
-            ),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AspectRatio(
-                    aspectRatio: 1.02,
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: kSecondaryColor.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Hero(
-                        tag: product.id.toString(),
-                        child: Image.asset(product.images[0]),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    product.title,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                    maxLines: 2,
-                  ),
-                  Text(product.shortDescription, style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, color: Colors.grey),),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(
+                Radius.circular(18.0),
+              ),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.green,
+                  spreadRadius: 4,
+                  blurRadius: 10,
+                  offset: Offset(0,6)
+                ),
+                BoxShadow(
+                  color: Colors.green,
+                  spreadRadius: -4,
+                  blurRadius: 5,
+                  offset: Offset(6,0)
+                )
+              ]),
+          child:  SizedBox(
+            child: GestureDetector(
+                onTap: () => Navigator.pushNamed(
+                  context,
+                  DetailsScreen.routeName,
+                  arguments: ProductDetailsArguments(product: product),
+                ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Precio: \$${product.price}",
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.w600,
-                          color: kPrimaryColor,
+                      AspectRatio(
+                        aspectRatio: 1.02,
+                        child: Container(
+                          padding: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: kSecondaryColor.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Hero(
+                            tag: product.id.toString(),
+                            child: Image.asset(product.images[0]),
+                          ),
                         ),
                       ),
+                      const SizedBox(height: 10),
+                      Text(
+                        product.title,
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                        maxLines: 2,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Precio: \$${product.price}",
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.w600,
+                              color: kPrimaryColor,
+                            ),
+                          ),
+                        ],
+                      )
                     ],
-                  )
-                ],
-              ),
-            )
+                  ),
+                )
 
+            ),
           ),
         ),
+
       )
 
     );
