@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:shop_app/models/Cart.dart';
 
@@ -6,20 +8,24 @@ import '../../../size_config.dart';
 
 // Card de cada producto en carro de compras
 
-class CartCard extends StatelessWidget {
-  const CartCard({
-    Key? key,
-    required this.cart,
-  }) : super(key: key);
-
+class CartCard extends StatefulWidget {
+  const CartCard({super.key, required this.cart});
   final Cart cart;
 
   @override
+  State<CartCard> createState() => _CartCardState();
+}
+
+class _CartCardState extends State<CartCard> {
+  @override
   Widget build(BuildContext context) {
+    double subtotal = widget.cart.product.price * widget.cart.numOfItem;
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SizedBox(
-          width: 88,
+          width: getProportionateScreenWidth(100),
+          height: getProportionateScreenWidth(80),
           child: AspectRatio(
             aspectRatio: 0.88,
             child: Container(
@@ -28,7 +34,7 @@ class CartCard extends StatelessWidget {
                 color: Color(0xFFF5F6F9),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Image.asset(cart.product.images[0]),
+              child: Image.asset(widget.cart.product.images[0]),
             ),
           ),
         ),
@@ -37,23 +43,29 @@ class CartCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              cart.product.title,
-              style: TextStyle(color: Colors.black, fontSize: 16),
+              widget.cart.product.title,
+              style: TextStyle(color: Colors.black, fontSize: getProportionateScreenWidth(14)),
               maxLines: 2,
             ),
             SizedBox(height: 10),
             Text.rich(
               TextSpan(
-                text: "\$${cart.product.price}",
+                text: "\$${widget.cart.product.price}",
                 style: TextStyle(
-                    fontWeight: FontWeight.w600, color: kPrimaryColor),
+                    fontWeight: FontWeight.w600, color: kPrimaryColor, fontSize: getProportionateScreenWidth(14)),
                 children: [
                   TextSpan(
-                      text: " x${cart.numOfItem}",
-                      style: Theme.of(context).textTheme.bodyText1),
+                      text: " x${widget.cart.numOfItem}",
+                      style: TextStyle(fontSize: getProportionateScreenWidth(12))),
                 ],
               ),
             )
+          ],
+        ),
+        Column(
+          children: [
+            Text("SubTotal", style: TextStyle(fontSize: getProportionateScreenWidth(14)),),
+            Text("\$${subtotal}", style: TextStyle(fontSize: getProportionateScreenWidth(16), fontWeight: FontWeight.bold),)
           ],
         )
       ],
