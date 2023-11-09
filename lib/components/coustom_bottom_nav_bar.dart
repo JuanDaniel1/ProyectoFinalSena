@@ -3,17 +3,24 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/screens/chatbot/chatbotscreen.dart';
 import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:shop_app/screens/profile/profile_screen.dart';
+import 'package:shop_app/screens/sign_in/components/sign_form.dart';
+import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
+import 'package:shop_app/usuario.dart';
 
 import '../constants.dart';
 import '../enums.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
-  const CustomBottomNavBar({
+
+   CustomBottomNavBar({
     Key? key,
-    required this.selectedMenu,
+    required this.selectedMenu
   }) : super(key: key);
 
   final MenuState selectedMenu;
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -66,8 +73,9 @@ class CustomBottomNavBar extends StatelessWidget {
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, ProfileScreen.routeName),
+                onPressed: () {
+
+                    Navigator.pushNamed(context, ProfileScreen.routeName);}
               ),
             ],
           )),

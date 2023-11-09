@@ -34,6 +34,10 @@ dependencies:
   bubble: ^1.1.9+1
   intl: ^0.18.1
   carousel_slider: ^4.0.0
+  snippet_coder_utils: ^1.0.9
+  image_picker: ^0.8.4+4
+  http: ^0.13.5
+  email_validator: ^2.1.17
 
 dev_dependencies:
   flutter_test:

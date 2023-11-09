@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:shop_app/main.dart';
+import 'package:shop_app/pages/producto/producto_add_edit.dart';
 import 'package:shop_app/screens/cart/cart_screen.dart';
 import 'package:shop_app/screens/chatbot/chatbotscreen.dart';
 import 'package:shop_app/screens/complete_profile/complete_profile_screen.dart';
@@ -12,6 +13,7 @@ import 'package:shop_app/screens/profile/profile_screen.dart';
 import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:shop_app/screens/splash/splash_screen.dart';
 import 'package:shop_app/screens/chatbot/chatbotscreen.dart';
+import 'package:shop_app/menu.dart';
 
 import 'screens/sign_up/sign_up_screen.dart';
 // Rutas para navegar entre varias secciones
@@ -30,6 +32,8 @@ final Map<String, WidgetBuilder> routes = {
   CartScreen.routeName: (context) => CartScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
   ChatBot.routeName: (context) => ChatBot(title: "ChatBot"),
+  Menu.routeName: (context) => Menu(),
+  ProductoAddEdit.routeName: (context) => ProductoAddEdit()
 };
 
 

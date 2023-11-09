@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/components/default_button.dart';
+import 'package:shop_app/menu.dart';
 import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:shop_app/size_config.dart';
 
@@ -34,7 +35,7 @@ class Body extends StatelessWidget {
           child: DefaultButton(
             text: "Ir a inicio",
             press: () {
-              Navigator.pushNamed(context, HomeScreen.routeName);
+              Navigator.pushNamed(context, Menu.routeName);
             },
           ),
         ),
